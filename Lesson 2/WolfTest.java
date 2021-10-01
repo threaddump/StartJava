@@ -7,6 +7,12 @@
         получите эти значения из полей и отобразите в консоли
         вызовите методы объекта
 
+    Урок 2, часть 5
+
+    Модифицируйте класс WolfTest
+        с помощью сеттеров присвойте полям экземпляра класса Wolf какие-то значения
+        считайте эти значения из полей с помощью геттеров и отобразите в консоли
+
     javac Wolf.java WolfTest.java
     java WolfTest
 */
@@ -15,17 +21,17 @@ public class WolfTest {
     public static void main(String[] args) {
         Wolf w = new Wolf();
 
-        w.male = true;
-        w.monicker = "Greyback";
-        w.weight = 42.1f;
-        w.age = 5;
-        w.color = "RAL 7011 (Iron Grey)";
+        w.setMale(true);
+        w.setMonicker("Greyback");
+        w.setWeight(42.1f);
+        w.setAge((byte) 5);
+        w.setColor("RAL 7011 (Iron Grey)");
 
-        System.out.println("w.male = " + w.male);
-        System.out.println("w.monicker = " + w.monicker);
-        System.out.println("w.weight = " + w.weight);
-        System.out.println("w.age = " + w.age);
-        System.out.println("w.color = " + w.color);
+        System.out.println("w.male = " + w.isMale());
+        System.out.println("w.monicker = " + w.getMonicker());
+        System.out.println("w.weight = " + w.getWeight());
+        System.out.println("w.age = " + w.getAge());
+        System.out.println("w.color = " + w.getColor());
 
         w.walk();
         w.sit();

@@ -5,14 +5,66 @@
         объявите в нем поля: пол, кличка, вес, возраст, окрас
         реализуйте методы: идти, сидеть, бежать, выть, охотиться
         в каждом методе выводите сообщение вида: "Воет", "Сидит" и тд
+
+    Урок 2, часть 5
+
+    Модифицируйте класс Wolf
+        у всех полей класса напишите модификатор доступа private
+        а у его методов — public
+        для доступа к полям создайте геттеры и сеттеры
+        в сеттере поля age реализуйте проверку: если возраст волка > 8 лет, то выведите сообщение "Некорректный возраст". В противном случае сохраните значение в поле
 */
 public class Wolf {
     
-    boolean male;
-    String monicker;
-    float weight;
-    byte age;
-    String color;
+    private boolean male;
+    private String monicker;
+    private float weight;
+    private byte age;
+    private String color;
+
+    public boolean isMale() {
+        return male;
+    }
+
+    public void setMale(boolean male) {
+        this.male = male;
+    }
+
+    public String getMonicker() {
+        return monicker;
+    }
+
+    public void setMonicker(String monicker) {
+        this.monicker = monicker;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public byte getAge() {
+        return age;
+    }
+
+    public void setAge(byte age) {
+        if (age > 8) {
+            System.out.println("error: incorrect age");
+        } else {
+            this.age = age;
+        }
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public void walk() {
         System.out.println(monicker + " is walking");
