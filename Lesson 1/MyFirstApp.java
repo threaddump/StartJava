@@ -1,3 +1,6 @@
+/*
+    Урок 1, части 2-5
+*/
 public class MyFirstApp {
 
     /*
