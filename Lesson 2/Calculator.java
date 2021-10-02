@@ -130,5 +130,4 @@ public class Calculator {
         }
         return power;
     }
-
 }
