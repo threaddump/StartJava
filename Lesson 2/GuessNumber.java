@@ -59,6 +59,7 @@ public class GuessNumber {
             // skip CR+LF
             scanner.nextLine();
         } while ((userGuess < 0) || (userGuess > 100));
+        activePlayer.setNumber(userGuess);
 
         if (userGuess != secretNumber) {
             // display hint
@@ -80,6 +81,6 @@ public class GuessNumber {
     }
 
     public void reportWinner() {
-        System.out.println(winner.getName() + " отгадал число. Поздравляю с победой!");
+        System.out.println("Игрок " + winner.getName() + " отгадал число. Поздравляю с победой!");
     }
 }
