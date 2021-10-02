@@ -9,16 +9,6 @@
 */
 public class Jaeger {
 
-    // model name: Chronos Berserker
-    // mark: Mark-5
-    // weapons: 2x Hammerhead Missles
-    // status: destroyed
-
-    // model name: Titan Redeemer
-    // mark: Mark-6
-    // weapons: M-19 Morning Star, EMP Mist Grenade, Arm Mounted Cannons
-    // status: destroyed
-
     private String modelName;
     private String mark;
     private String weapon;
