@@ -13,9 +13,11 @@
         с помощью сеттеров присвойте полям экземпляра класса Wolf какие-то значения
         считайте эти значения из полей с помощью геттеров и отобразите в консоли
 
-    javac Wolf.java WolfTest.java
-    java WolfTest
+    javac -encoding utf8 -d out -sourcepath src src/com/startjava/lesson_2_3/animal/WolfTest.java
+    java -cp out com.startjava.lesson_2_3.animal.WolfTest
 */
+package com.startjava.lesson_2_3.animal;
+
 public class WolfTest {
     
     public static void main(String[] args) {

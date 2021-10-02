@@ -1,6 +1,11 @@
 /*
     Урок 1, части 2-5
+
+    javac -encoding utf8 -d out src/com/startjava/lesson_1/app/MyFirstApp.java
+    java -cp out com.startjava.lesson_1.app.MyFirstApp
 */
+package com.startjava.lesson_1.app;
+
 public class MyFirstApp {
 
     /*

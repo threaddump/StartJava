@@ -5,7 +5,12 @@
     Объявите в методе переменные всех существующих в Java примитивных типов данных. Каждой переменной присвойте значение
     В качестве значений используйте информацию о своем компьютере: количество ядер, частота процессора и тд.
     Выведите все значения переменных на консоль
+    
+    javac -encoding utf8 -d out src/com/startjava/lesson_1/etc/Variable.java
+    java -cp out com.startjava.lesson_1.etc.Variable
 */
+package com.startjava.lesson_1.etc;
+
 public class Variable {
     
     public static void main(String[] args) {

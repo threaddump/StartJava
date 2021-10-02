@@ -7,9 +7,11 @@
         создайте 2 экземпляра класса Jaeger в классе JaegerTest и поэкспериментируйте с ними (проинициализируйте поля, вызывайте методы, перезаписывайте и выводите значения полей)
         для инициализации полей объектов при их создании используйте в начале сеттеры (покажите решение ментору), а потом перепишите, используя конструктор (1, 2)
 
-    javac Jaeger.java JaegerTest.java
-    java JaegerTest
+    javac -encoding utf8 -d out -sourcepath src src/com/startjava/lesson_2_3/robot/JaegerTest.java
+    java -cp out com.startjava.lesson_2_3.robot.JaegerTest
 */
+package com.startjava.lesson_2_3.robot;
+
 public class JaegerTest {
 
     public static void main(String[] args) {

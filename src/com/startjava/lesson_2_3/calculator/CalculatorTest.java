@@ -15,9 +15,11 @@
             no — программа завершается
             при вводе иного значения выводите сообщение до тех пор, пока не будут введены допустимые ответы
 
-    javac -encoding utf8 Calculator.java CalculatorTest.java
-    java CalculatorTest
+    javac -encoding utf8 -d out -sourcepath src src/com/startjava/lesson_2_3/calculator/CalculatorTest.java
+    java -cp out com.startjava.lesson_2_3.calculator.CalculatorTest
 */
+package com.startjava.lesson_2_3.calculator;
+
 import java.util.Scanner;
 
 public class CalculatorTest {

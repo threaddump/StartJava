@@ -10,9 +10,11 @@
         меняйте значение переменной, хранящей числа игрока, автоматически по какому-то простому алгоритму (без применения ввода с клавиатуры или генерации рандомных чисел)
         игра продолжается до тех пор, пока число не будет угадано
 
-    javac -encoding utf8 MyFirstGame.java
-    java MyFirstGame
+    javac -encoding utf8 -d out src/com/startjava/lesson_1/game/MyFirstGame.java
+    java -cp out com.startjava.lesson_1.game.MyFirstGame
 */
+package com.startjava.lesson_1.game;
+
 public class MyFirstGame {
     
     public static void main(String[] args) {

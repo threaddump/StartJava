@@ -7,9 +7,11 @@
         Символ ^ используется в данном задании для обозначения операции возведения в степень, но в Java он выполняет совсем иную функцию. Использовать его для возведения в степень не получится. Самостоятельно реализуйте данную операцию (не используйте Math.pow())
         Символ %, похожий на проценты, называется оператором деления по модулю. В калькуляторе не надо считать проценты! Считайте остаток от деления
 
-    javac -encoding utf8 Calculator.java
-    java Calculator
+    javac -encoding utf8 -d out src/com/startjava/lesson_1/calculator/Calculator.java
+    java -cp out com.startjava.lesson_1.calculator.Calculator
 */
+package com.startjava.lesson_1.calculator;
+
 public class Calculator {
 
     public static void main(String[] args) {

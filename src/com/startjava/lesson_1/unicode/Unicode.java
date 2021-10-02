@@ -3,9 +3,11 @@
 
     Выведите в цикле символы кодировки Unicode в диапазоне [9398, 10178]. Если выводятся кракозябры, то [33, 126]
 
-    javac -encoding utf8 Unicode.java
-    java Unicode
+    javac -d out src/com/startjava/lesson_1/unicode/Unicode.java
+    java -cp out com.startjava.lesson_1.unicode.Unicode
 */
+package com.startjava.lesson_1.unicode;
+
 public class Unicode {
 
     public static void main(String[] args) {

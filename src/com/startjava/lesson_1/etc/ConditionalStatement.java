@@ -7,9 +7,11 @@
     Выводите сообщения на консоль
     Не используйте переменные типа String
 
-    javac -encoding utf8 ConditionalStatement.java
-    java ConditionalStatement
+    javac -encoding utf8 -d out src/com/startjava/lesson_1/etc/ConditionalStatement.java
+    java -cp out com.startjava.lesson_1.etc.ConditionalStatement
 */
+package com.startjava.lesson_1.etc;
+
 public class ConditionalStatement {
     
     public static void main(String[] args) {
