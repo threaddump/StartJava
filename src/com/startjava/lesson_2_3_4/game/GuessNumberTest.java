@@ -41,36 +41,29 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
 
+    // configuration
+    private static int MAX_ATTEMPTS = 10;
+
     public static void main(String[] args) {
         displayHelp();
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Введите имя первого игрока: ");
-        Player player1 = new Player(scanner.nextLine());
+        Player player1 = new Player(scanner.nextLine(), MAX_ATTEMPTS);
 
         System.out.print("Введите имя второго игрока: ");
-        Player player2 = new Player(scanner.nextLine());
+        Player player2 = new Player(scanner.nextLine(), MAX_ATTEMPTS);
 
         GuessNumber game = new GuessNumber(player1, player2);
         
-        while (true) {
+        do {
             game.initialize();
             do {
                 game.step(scanner);
             } while (!game.isComplete());
             game.reportResults();
-
-            String userAnswer;
-            do {
-                System.out.print("Хотите продолжить игру? [yes/no]: ");
-                userAnswer = scanner.nextLine();
-            } while (!userAnswer.equals("yes") && !userAnswer.equals("no"));
-
-            if (userAnswer.equals("no")) {
-                break;
-            }
-        }
+        } while (!acknowledgeExit(scanner));
     }
 
     private static void displayHelp() {
@@ -78,5 +71,15 @@ public class GuessNumberTest {
         System.out.println("Компьютер загадывает случайное целое число от 0 до 100. Ваша задача - угадать его.");
         System.out.println("В каждом раунде игрокам даётся по 10 попыток.");
         System.out.println();
+    }
+
+    private static boolean acknowledgeExit(Scanner scanner) {
+        String userAnswer;
+        do {
+            System.out.print("Хотите продолжить игру? [yes/no]: ");
+            userAnswer = scanner.nextLine();
+        } while (!userAnswer.equals("yes") && !userAnswer.equals("no"));
+
+        return userAnswer.equals("no");
     }
 }

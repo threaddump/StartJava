@@ -41,37 +41,39 @@ import java.util.Arrays;
 
 public class Player {
 
-    public static int MAX_ATTEMPTS = 10;
+    private final String name;
+    private final int maxAttempts;
 
-    private String name;
     private int attemptsLeft;
-    private int[] numbers = new int[MAX_ATTEMPTS];
+    private final int[] numbers;
 
-    public Player(String name) {
+    public Player(String name, int maxAttempts) {
         this.name = name;
+        this.maxAttempts = maxAttempts;
+        numbers = new int[maxAttempts];
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public int getAttemptsLeft() { return attemptsLeft; }
 
-    public boolean anyAttemptsLeft() { return attemptsLeft > 0; }
+    public int getAttemptsUsed() { return maxAttempts - attemptsLeft; }
+
+    public boolean hasAttemptsLeft() { return attemptsLeft > 0; }
 
     public void burnAttempt() { attemptsLeft--; }
 
     public void storeNumber(int number) {
-        numbers[MAX_ATTEMPTS - attemptsLeft] = number;
+        numbers[maxAttempts - attemptsLeft] = number;
     }
 
     public int[] getStoredNumbers() {
-        return Arrays.copyOf(numbers, MAX_ATTEMPTS - attemptsLeft);
+        return Arrays.copyOf(numbers, maxAttempts - attemptsLeft);
     }
 
     public void reset() {
-        Arrays.fill(numbers, 0, MAX_ATTEMPTS - attemptsLeft, 0);
-        attemptsLeft = MAX_ATTEMPTS;
+        Arrays.fill(numbers, 0, maxAttempts - attemptsLeft, 0);
+        attemptsLeft = maxAttempts;
     }
 
     @Override

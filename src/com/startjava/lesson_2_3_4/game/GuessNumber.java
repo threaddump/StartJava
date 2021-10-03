@@ -59,7 +59,7 @@ public class GuessNumber {
     }
 
     public boolean isComplete() {
-        return (winner != null) || !(player1.anyAttemptsLeft() || player2.anyAttemptsLeft());
+        return (winner != null) || !(player1.hasAttemptsLeft() || player2.hasAttemptsLeft());
     }
 
     public void initialize() {
@@ -98,7 +98,7 @@ public class GuessNumber {
                 System.out.println("Данное число больше того, что загадал компьютер");
             }
 
-            if (!activePlayer.anyAttemptsLeft()) {
+            if (!activePlayer.hasAttemptsLeft()) {
                 System.out.println("У " + activePlayer.getName() + " закончились попытки");
             }
 
@@ -120,7 +120,7 @@ public class GuessNumber {
             System.out.println(
                     "Игрок " + winner.getName() +
                     " угадал число " + secretNumber +
-                    " с " + (Player.MAX_ATTEMPTS - winner.getAttemptsLeft()) + " попытки"
+                    " с " + winner.getAttemptsUsed() + " попытки"
                     );
         } else {
             System.out.println("Раунд завершен. У обоих игроков закончились попытки");
