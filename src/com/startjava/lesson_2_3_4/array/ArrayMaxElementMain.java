@@ -11,7 +11,7 @@ public class ArrayMaxElementMain {
         int numElems = scanner.nextInt();
         int[] numbers = new int[numElems];
 
-        System.out.print("Заполните массив целыми числами через пробел:");
+        System.out.print("Заполните массив целыми числами через пробел: ");
         for (int i = 0; i < numElems; i++) {
             numbers[i] = scanner.nextInt();
         }

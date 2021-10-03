@@ -15,6 +15,15 @@
             no — программа завершается
             при вводе иного значения выводите сообщение до тех пор, пока не будут введены допустимые ответы
 
+    Урок 4, часть 6, задача 1
+
+    Модифицируйте программу Калькулятор:
+        используйте следующий формат ввода (пример): Введите математическое выражение: 2 ^ 10
+        введенное выражение храните в массиве. В этом поможет метод String.split()
+        для преобразования чисел выражения из String в int используйте метод Integer.parseInt()
+        замените методами класса Math, какие только сможете найти, ваши реализации вычислений
+        метод calculate() должен возвращать результат вычисления. Выводите его в CalculatorTest
+
     javac -encoding utf8 -d out -sourcepath src src/com/startjava/lesson_2_3_4/calculator/CalculatorTest.java
     java -cp out com.startjava.lesson_2_3_4.calculator.CalculatorTest
 */
@@ -25,14 +34,12 @@ public class Calculator {
     private char op;
     private int firstArg;
     private int secondArg;
-    private int result;
     private String lastError;
 
     public Calculator() {
         op = '?';
         firstArg = 0;
         secondArg = 0;
-        result = 0;
         lastError = "";
     }
 
@@ -60,10 +67,6 @@ public class Calculator {
         this.secondArg = secondArg;
     }
 
-    public int getResult() {
-        return result;
-    }
-
     public String getLastError() {
         return lastError;
     }
@@ -72,67 +75,55 @@ public class Calculator {
         this.lastError = lastError;
     }
 
-    public boolean execute() {
-        switch (op) {
-        case '+':
-            result = firstArg + secondArg;
-            setLastError("");
-            return true;
-        case '-':
-            result = firstArg - secondArg;
-            setLastError("");
-            return true;
-        case '*':
-            result = firstArg * secondArg;
-            setLastError("");
-            return true;
-        case '/':
-            if (secondArg != 0) {
-                result = firstArg / secondArg;
-                setLastError("");
-                return true;
-            } else {
+    public boolean validate() {
+        if (secondArg == 0) {
+            if ((op == '/') || (op == '%')) {
                 setLastError("Деление на ноль");
                 return false;
-            }
-        case '%':
-            if (secondArg != 0) {
-                result = firstArg % secondArg;
-                setLastError("");
-                return true;
-            } else {
-                setLastError("Деление на ноль");
-                return false;
-            }
-        case '^':
-            if (secondArg > 0) {
-                result = calcPositiveIntPower(firstArg, secondArg);
-                setLastError("");
-                return true;
-            } else if (secondArg < 0) {
-                setLastError("Отрицательные показатели степени не поддерживаются");
-                return false;
-            } else if (/* secondArg == 0 && */ firstArg != 0) {
-                result = 1;
-                setLastError("");
-                return true;
-            } else /* if (secondArg == 0 && firstArg == 0) */ {
+            } else if ((firstArg == 0) && (op == '^')) {
                 // https://en.wikipedia.org/wiki/Zero_to_the_power_of_zero
                 setLastError("Ноль в нулевой степени");
                 return false;
             }
-        default:
+        } else if ((secondArg < 0) && (op == '^')) {
+            setLastError("Отрицательные показатели степени не поддерживаются");
+            return false;
+        }
+
+        char[] validOps = {'+', '-', '*', '/', '%', '^'};
+        boolean validOp = false;
+        for (char c : validOps) {
+            if (op == c) {
+                validOp = true;
+                break;
+            }
+        }
+        if (!validOp) {
             setLastError("Неизвестная операция");
             return false;
         }
+
+        setLastError("");
+        return true;
     }
 
-    private int calcPositiveIntPower(int base, int exp) {
-        int power = 1;
-        while (exp > 0) {
-            power *= base;
-            exp--;
+    public int calculate() {
+        switch (op) {
+            case '+':
+                return Math.addExact(firstArg, secondArg);
+            case '-':
+                return Math.subtractExact(firstArg, secondArg);
+            case '*':
+                return Math.multiplyExact(firstArg, secondArg);
+            case '/':
+                return Math.floorDiv(firstArg, secondArg);
+            case '%':
+                return Math.floorMod(firstArg, secondArg);
+            case '^':
+                return (int) Math.pow(firstArg, secondArg);
+            default:
+                // should never happen
+                return 0;
         }
-        return power;
     }
 }

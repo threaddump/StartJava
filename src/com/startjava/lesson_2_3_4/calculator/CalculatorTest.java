@@ -15,6 +15,15 @@
             no — программа завершается
             при вводе иного значения выводите сообщение до тех пор, пока не будут введены допустимые ответы
 
+    Урок 4, часть 6, задача 1
+
+    Модифицируйте программу Калькулятор:
+        используйте следующий формат ввода (пример): Введите математическое выражение: 2 ^ 10
+        введенное выражение храните в массиве. В этом поможет метод String.split()
+        для преобразования чисел выражения из String в int используйте метод Integer.parseInt()
+        замените методами класса Math, какие только сможете найти, ваши реализации вычислений
+        метод calculate() должен возвращать результат вычисления. Выводите его в CalculatorTest
+
     javac -encoding utf8 -d out -sourcepath src src/com/startjava/lesson_2_3_4/calculator/CalculatorTest.java
     java -cp out com.startjava.lesson_2_3_4.calculator.CalculatorTest
 */
@@ -28,40 +37,39 @@ public class CalculatorTest {
         Calculator calc = new Calculator();
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            System.out.print("Введите первое число: ");
-            calc.setFirstArg(scanner.nextInt());
-            // skip CR+LF
-            scanner.nextLine();
+        do {
+            /*
+                TODO:
+                the way we parse equation  is unsafe. "1 +* 2" would work fine, and the result will be the same as
+                for "1 + 2" (that is - all characters, except 1st are ignored in 2nd token of equation). moreover,
+                a check for the number of tokens is required.
+            */
+            System.out.print("Введите математическое выражение: ");
+            String[] equationTokens = scanner.nextLine().split(" ", 3);
+            calc.setFirstArg(Integer.parseInt(equationTokens[0]));
+            calc.setOp(equationTokens[1].charAt(0));
+            calc.setSecondArg(Integer.parseInt(equationTokens[2]));
 
-            System.out.print("Введите знак математической операции: ");
-            calc.setOp(scanner.nextLine().charAt(0));
-
-            System.out.print("Введите второе число: ");
-            calc.setSecondArg(scanner.nextInt());
-            // skip CR+LF
-            scanner.nextLine();
-
-            if (calc.execute()) {
+            if (calc.validate()) {
                 System.out.println(
                         calc.getFirstArg() + " " +
                         calc.getOp() + " " +
                         calc.getSecondArg() + " = " +
-                        calc.getResult()
+                        calc.calculate()
                         );
             } else {
                 System.out.println("Ошибка: " + calc.getLastError());
             }
+        } while (!acknowledgeExit(scanner));
+    }
 
-            String userAnswer;
-            do {
-                System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-                userAnswer = scanner.nextLine();
-            } while (!userAnswer.equals("yes") && !userAnswer.equals("no"));
+    private static boolean acknowledgeExit(Scanner scanner) {
+        String userAnswer;
+        do {
+            System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+            userAnswer = scanner.nextLine();
+        } while (!userAnswer.equals("yes") && !userAnswer.equals("no"));
 
-            if (userAnswer.equals("no")) {
-                break;
-            }
-        }
+        return userAnswer.equals("no");
     }
 }
