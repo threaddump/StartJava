@@ -1,10 +1,10 @@
 /*
     Классическая задачка - разворот односвязного списка.
 
-    javac -encoding utf8 -d out -sourcepath src src/com/startjava/unaided/reverse_linked_list/LinkedListTest.java
-    java -cp out com.startjava.unaided.reverse_linked_list.LinkedListTest
+    javac -encoding utf8 -d out -sourcepath src src/com/startjava/unaided/lists/LinkedListTest.java
+    java -cp out com.startjava.unaided.lists.LinkedListTest
 */
-package com.startjava.unaided.reverse_linked_list;
+package com.startjava.unaided.lists;
 
 public class LinkedListTest {
 
