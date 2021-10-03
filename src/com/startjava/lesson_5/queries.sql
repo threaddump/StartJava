@@ -29,7 +29,7 @@ SELECT * FROM Jaegers WHERE kaijuKill = (SELECT MIN(kaijuKill) FROM Jaegers);
 SELECT AVG(weight) FROM Jaegers;
 
 -- увеличьте на единицу количество уничтоженных kaiju у роботов, которые до сих пор не разрушены
-UPDATE Jaegers SET kaijuKill = kaijuKill - 1 WHERE status <> 'DSTR';
+UPDATE Jaegers SET kaijuKill = kaijuKill + 1 WHERE status <> 'DSTR';
 
 -- удалите уничтоженных роботов
 DELETE FROM Jaegers WHERE status = 'DSTR';
