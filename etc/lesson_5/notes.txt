@@ -1,0 +1,23 @@
+run psql with correct encoding:
+
+cd \
+cd projects\repo\StartJava\src\com\startjava\lesson_5
+chcp 1251
+psql -U postgres
+set client_encoding='win1251';
+
+---
+
+exec scripts in console (using psql):
+
+\i 'c:/projects/repo/StartJava/src/com/startjava/lesson_5/create_db.sql'
+\i 'c:/projects/repo/StartJava/src/com/startjava/lesson_5/init_db.sql'
+\i 'c:/projects/repo/StartJava/src/com/startjava/lesson_5/queries.sql'
+
+--
+
+cleanup:
+
+DROP TABLE Jaegers;
+\c postgres;
+DROP DATABASE jaegers;
