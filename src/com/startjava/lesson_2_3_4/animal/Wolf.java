@@ -14,10 +14,10 @@
         для доступа к полям создайте геттеры и сеттеры
         в сеттере поля age реализуйте проверку: если возраст волка > 8 лет, то выведите сообщение "Некорректный возраст". В противном случае сохраните значение в поле
 
-    javac -encoding utf8 -d out -sourcepath src src/com/startjava/lesson_2_3/animal/WolfTest.java
-    java -cp out com.startjava.lesson_2_3.animal.WolfTest
+    javac -encoding utf8 -d out -sourcepath src src/com/startjava/lesson_2_3_4/animal/WolfTest.java
+    java -cp out com.startjava.lesson_2_3_4.animal.WolfTest
 */
-package com.startjava.lesson_2_3.animal;
+package com.startjava.lesson_2_3_4.animal;
 
 public class Wolf {
     

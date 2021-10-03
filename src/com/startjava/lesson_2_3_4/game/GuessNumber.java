@@ -19,26 +19,73 @@
             no — игра завершается
             при вводе иного значения выводите сообщение до тех пор, пока не будут введены допустимые ответы
 
-    javac -encoding utf8 -d out -sourcepath src src/com/startjava/lesson_2_3/game/GuessNumberTest.java
-    java -cp out com.startjava.lesson_2_3.game.GuessNumberTest
+    javac -encoding utf8 -d out -sourcepath src src/com/startjava/lesson_2_3_4/game/GuessNumberTest.java
+    java -cp out com.startjava.lesson_2_3_4.game.GuessNumberTest
 */
-package com.startjava.lesson_2_3.game;
+package com.startjava.lesson_2_3_4.game;
 
-public class Player {
+import java.util.Scanner;
 
-    private String name;
-    private int number;
-    
-    public Player(String name) {
-        this.name = name;
-        number = 0;
+public class GuessNumber {
+
+    private Player player1;
+    private Player player2;
+
+    private int secretNumber;
+    private Player activePlayer;
+    private Player winner;
+
+    public GuessNumber(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+
+        secretNumber = 0;
+        activePlayer = null;
+        winner = null;
     }
 
-    public String getName() {
-        return name;
+    public boolean isComplete() {
+        return (winner != null);
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void initialize() {
+        System.out.println("Компьютер загадал случайное число от 0 до 100. Попробуйте его отгадать!");
+        secretNumber = (int) (Math.random() * 100.0);
+        activePlayer = (Math.random() < 0.5) ? player1 : player2;
+        winner = null;
+    }
+
+    public void step(Scanner scanner) {
+        int userGuess;
+        do {
+            System.out.print("Ход игрока " + activePlayer.getName() + ". Введите число от 0 до 100: ");
+
+            userGuess = scanner.nextInt();
+            // skip CR+LF
+            scanner.nextLine();
+        } while ((userGuess < 0) || (userGuess > 100));
+        activePlayer.setNumber(userGuess);
+
+        if (userGuess != secretNumber) {
+            // display hint
+            if (userGuess < secretNumber) {
+                System.out.println("Данное число меньше того, что загадал компьютер");
+            } else /* if (userGuess > secretNumber) */ {
+                System.out.println("Данное число больше того, что загадал компьютер");
+            }
+
+            // switch player
+            if (activePlayer == player1) {
+                activePlayer = player2;
+            } else /* if (activePlayer == player2) */ {
+                activePlayer = player1;
+            }
+        } else {
+            winner = activePlayer;
+        }
+    }
+
+    public void reportWinner() {
+        System.out.println("Игрок " + winner.getName() + " отгадал число. Поздравляю с победой!");
     }
 }

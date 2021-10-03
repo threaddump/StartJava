@@ -6,9 +6,9 @@
     Проинициализируйте их какими-то значениями
     Создайте в классе методы, описывающие поведение (что он может делать) человека: идти, сидеть, бежать, говорить, учить Java
 
-    javac -encoding utf8 -d out src/com/startjava/lesson_2_3/person/Person.java
+    javac -encoding utf8 -d out src/com/startjava/lesson_2_3_4/person/Person.java
 */
-package com.startjava.lesson_2_3.person;
+package com.startjava.lesson_2_3_4.person;
 
 public class Person {
 
