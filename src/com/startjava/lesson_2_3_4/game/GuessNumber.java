@@ -122,12 +122,12 @@ public class GuessNumber {
             System.out.println("Раунд завершен. У обоих игроков закончились попытки");
         }
 
-        displayStoredNumbers(player1);
-        displayStoredNumbers(player2);
+        displayNumbers(player1);
+        displayNumbers(player2);
     }
 
-    private void displayStoredNumbers(Player player) {
-        int[] numbers = player.getStoredNumbers();
+    private void displayNumbers(Player player) {
+        int[] numbers = player.getNumbers();
         if (numbers.length > 0) {
             System.out.print("Числа, введенные игроком " + player.getName() + ": ");
             System.out.println(Arrays.toString(numbers));

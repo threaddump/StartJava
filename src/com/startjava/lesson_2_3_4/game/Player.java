@@ -59,7 +59,7 @@ public class Player {
         numbers[maxAttempts - (attemptsLeft--)] = number;
     }
 
-    public int[] getStoredNumbers() {
+    public int[] getNumbers() {
         return Arrays.copyOf(numbers, maxAttempts - attemptsLeft);
     }
 
