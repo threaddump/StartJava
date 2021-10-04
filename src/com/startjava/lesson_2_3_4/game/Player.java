@@ -44,8 +44,8 @@ public class Player {
     private final String name;
     private final int maxAttempts;
 
-    private int attemptsLeft;
     private final int[] numbers;
+    private int attemptsLeft;
 
     public Player(String name, int maxAttempts) {
         this.name = name;
@@ -55,33 +55,22 @@ public class Player {
 
     public String getName() { return name; }
 
-    public int getAttemptsLeft() { return attemptsLeft; }
-
-    public int getAttemptsUsed() { return maxAttempts - attemptsLeft; }
-
-    public boolean hasAttemptsLeft() { return attemptsLeft > 0; }
-
-    public void burnAttempt() { attemptsLeft--; }
-
-    public void storeNumber(int number) {
-        numbers[maxAttempts - attemptsLeft] = number;
+    public void setNumber(int number) {
+        numbers[maxAttempts - (attemptsLeft--)] = number;
     }
 
     public int[] getStoredNumbers() {
         return Arrays.copyOf(numbers, maxAttempts - attemptsLeft);
     }
 
-    public void reset() {
+    public int getAttemptsLeft() { return attemptsLeft; }
+
+    public int getAttemptsUsed() { return maxAttempts - attemptsLeft; }
+
+    public boolean hasAttemptsLeft() { return attemptsLeft > 0; }
+
+    public void initialize() {
         Arrays.fill(numbers, 0, maxAttempts - attemptsLeft, 0);
         attemptsLeft = maxAttempts;
-    }
-
-    @Override
-    public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", attemptsLeft=" + attemptsLeft +
-                ", numbers=" + Arrays.toString(numbers) +
-                '}';
     }
 }

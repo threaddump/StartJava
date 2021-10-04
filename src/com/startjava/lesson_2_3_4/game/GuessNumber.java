@@ -70,8 +70,8 @@ public class GuessNumber {
 
         winner = null;
 
-        player1.reset();
-        player2.reset();
+        player1.initialize();
+        player2.initialize();
     }
 
     public void step(Scanner scanner) {
@@ -87,9 +87,7 @@ public class GuessNumber {
             // skip CR+LF
             scanner.nextLine();
         } while ((userGuess < 0) || (userGuess > 100));
-
-        activePlayer.storeNumber(userGuess);
-        activePlayer.burnAttempt();
+        activePlayer.setNumber(userGuess);
 
         if (userGuess != secretNumber) {
             if (userGuess < secretNumber) {
@@ -114,8 +112,6 @@ public class GuessNumber {
     }
 
     public void reportResults() {
-        System.out.println();
-
         if (winner != null) {
             System.out.println(
                     "Игрок " + winner.getName() +
@@ -128,8 +124,6 @@ public class GuessNumber {
 
         displayStoredNumbers(player1);
         displayStoredNumbers(player2);
-
-        System.out.println();
     }
 
     private void displayStoredNumbers(Player player) {

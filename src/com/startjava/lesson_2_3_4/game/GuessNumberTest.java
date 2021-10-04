@@ -51,7 +51,6 @@ public class GuessNumberTest {
 
         System.out.print("Введите имя первого игрока: ");
         Player player1 = new Player(scanner.nextLine(), MAX_ATTEMPTS);
-
         System.out.print("Введите имя второго игрока: ");
         Player player2 = new Player(scanner.nextLine(), MAX_ATTEMPTS);
 
@@ -69,8 +68,7 @@ public class GuessNumberTest {
     private static void displayHelp() {
         System.out.println("Игра \"Угадай число\" для двух игроков.");
         System.out.println("Компьютер загадывает случайное целое число от 0 до 100. Ваша задача - угадать его.");
-        System.out.println("В каждом раунде игрокам даётся по 10 попыток.");
-        System.out.println();
+        System.out.println("В каждом раунде игрокам даётся по " + MAX_ATTEMPTS + " попыток.");
     }
 
     private static boolean acknowledgeExit(Scanner scanner) {
@@ -79,7 +77,6 @@ public class GuessNumberTest {
             System.out.print("Хотите продолжить игру? [yes/no]: ");
             userAnswer = scanner.nextLine();
         } while (!userAnswer.equals("yes") && !userAnswer.equals("no"));
-
         return userAnswer.equals("no");
     }
 }
